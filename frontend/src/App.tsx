@@ -34,9 +34,30 @@ function App() {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom align="center">
+    <Container maxWidth="sm" sx={{
+      px: { xs: 2, sm: 3 },
+      py: { xs: 2, sm: 4 },
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
+      <Box sx={{
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: { xs: 2, sm: 3 }
+      }}>
+        <Typography
+          variant="h4"
+          component="h1"
+          gutterBottom
+          align="center"
+          sx={{
+            fontSize: { xs: '1.75rem', sm: '2.125rem' },
+            fontWeight: 600,
+            color: 'primary.main'
+          }}
+        >
           할 일 관리
         </Typography>
         <AddTodo onAdd={handleAdd} />

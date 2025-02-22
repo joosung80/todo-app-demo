@@ -21,22 +21,39 @@ export const AddTodo: React.FC<AddTodoProps> = ({ onAdd }) => {
     <Paper
       component="form"
       onSubmit={handleSubmit}
+      elevation={2}
       sx={{
-        p: '2px 4px',
+        p: { xs: '4px 8px', sm: '6px 12px' },
         display: 'flex',
         alignItems: 'center',
         width: '100%',
-        mb: 2
+        borderRadius: { xs: 1, sm: 2 },
+        transition: 'box-shadow 0.3s ease-in-out',
+        '&:hover': {
+          boxShadow: 4
+        }
       }}
     >
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
+        sx={{
+          ml: { xs: 1, sm: 2 },
+          flex: 1,
+          fontSize: { xs: '0.875rem', sm: '1rem' }
+        }}
         placeholder="할 일을 입력하세요"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <IconButton type="submit" sx={{ p: '10px' }}>
-        <AddIcon />
+      <IconButton
+        type="submit"
+        sx={{
+          p: { xs: '8px', sm: '10px' },
+          '&:hover': {
+            color: 'primary.main'
+          }
+        }}
+      >
+        <AddIcon sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }} />
       </IconButton>
     </Paper>
   );

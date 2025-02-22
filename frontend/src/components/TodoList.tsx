@@ -11,8 +11,19 @@ interface TodoListProps {
 
 export const TodoList: React.FC<TodoListProps> = ({ todos, onToggle, onDelete, onEdit }) => {
   return (
-    <Paper elevation={2} style={{ maxHeight: '60vh', overflow: 'auto' }}>
-      <List>
+    <Paper
+      elevation={3}
+      sx={{
+        maxHeight: { xs: '50vh', sm: '60vh' },
+        overflow: 'auto',
+        borderRadius: { xs: 1, sm: 2 },
+        backgroundColor: 'background.paper',
+        '&:empty': {
+          display: 'none'
+        }
+      }}
+    >
+      <List sx={{ p: 0 }}>
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
@@ -22,6 +33,17 @@ export const TodoList: React.FC<TodoListProps> = ({ todos, onToggle, onDelete, o
             onEdit={onEdit}
           />
         ))}
+        {todos.length === 0 && (
+          <Box sx={{
+            p: { xs: 3, sm: 4 },
+            textAlign: 'center',
+            color: 'text.secondary'
+          }}>
+            <Typography variant="body1">
+              할 일이 없습니다. 새로운 할 일을 추가해보세요!
+            </Typography>
+          </Box>
+        )}
       </List>
     </Paper>
   );
